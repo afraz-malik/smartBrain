@@ -13,7 +13,7 @@ const image = require('./controllers/image.js');
 const db = knex({
   client: 'pg',
   connection: {
-    host : 'localhost',	
+    host : '123',	
     user : 'postgres',
     password : 'root',
     database : 'smartbrain'
