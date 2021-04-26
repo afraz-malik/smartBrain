@@ -1,6 +1,7 @@
 const handleRegister = (req, res, db, bcrypt) =>{
 	const {email, password,name} = req.body;
 	const hash = bcrypt.hashSync(password);
+	res.json('workings');
 	db.select('*').from('users').where('email', '=', email).then(value=>{
 		if(value.length != 0){
 			res.status(400).json('already exist')
