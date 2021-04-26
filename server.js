@@ -33,8 +33,8 @@ app.put('/image',  (req, res)=>image.imageHandler(req, res,db));
 app.post('/apiCall',  (req, res)=>image.apiHandler(req, res));
 
 
-app.listen((3001), ()=>{
-	console.log('App is Running on Port 3001');
+app.listen(process.env.PORT || 3000, ()=>{
+	console.log(`App is Running on Port ${process.env.PORT}`);
 })
 
 
