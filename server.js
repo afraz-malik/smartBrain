@@ -13,8 +13,8 @@ const image = require('./controllers/image.js');
 const db = knex({
   client: 'pg',
   connection: {
-    connectionString : 'postgresql-convex-01478',
-    ssl: true
+    connectionString : process.env.DATABASE_URL,
+    ssl: true,
   }
 });
 
