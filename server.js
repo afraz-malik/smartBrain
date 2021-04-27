@@ -29,8 +29,8 @@ const databaseheroku = knex({
   }
 });
 
-// const db = databaselocal;
-const db = databaseheroku
+const db = databaselocal;
+// const db = databaseheroku
 
 const app = express();
 app.use(bodyParser.json());
@@ -39,7 +39,7 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   next();
 });
-app.get('/', (req, res)=>{res.json('PostgreSql')});
+app.get('/', (req, res)=>{res.json('PostgreSql from github')});
 app.get('/admin', (req, res)=>admin.adminHandler(req, res,db));
 app.post('/signin', (req, res)=>signin.signInHandler(req, res, db, bcrypt) );
 app.post('/register' , (req, res)=>register.handleRegister(req, res, db, bcrypt) );
