@@ -10,7 +10,16 @@ const register = require('./controllers/register.js');
 const profile = require('./controllers/profile.js');
 const image = require('./controllers/image.js');
 
-const db = knex({
+const databaselocal = knex({
+  client: 'pg',
+  connection: {
+    host: '127.0.0.1',
+    user: 'postgres',
+    password: 'root',
+    database: 'smartbrain'
+  }
+});
+const databaseheroku = knex({
   client: 'pg',
   connection: {
     connectionString : process.env.DATABASE_URL,
@@ -20,6 +29,8 @@ const db = knex({
   }
 });
 
+// const db = databaselocal;
+const db = databaseheroku
 
 const app = express();
 app.use(bodyParser.json());
@@ -37,8 +48,8 @@ app.put('/image',  (req, res)=>image.imageHandler(req, res,db));
 app.post('/apiCall',  (req, res)=>image.apiHandler(req, res));
 
 
-app.listen(process.env.PORT || 3000, ()=>{
-	console.log(`App is Running on Port ${process.env.PORT}`);
+app.listen( process.env.PORT || 3002, ()=>{
+	console.log(`App is Running on Port ${process.env.PORT} or 3002`);
 })
 
 
