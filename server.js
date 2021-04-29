@@ -29,8 +29,8 @@ const databaseheroku = knex({
   }
 });
 
-// const db = databaselocal;
-const db = databaseheroku
+const db = databaselocal;
+// const db = databaseheroku
 
 const app = express();
 app.use(bodyParser.json());
