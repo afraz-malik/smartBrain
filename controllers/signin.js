@@ -1,5 +1,8 @@
 const signInHandler = (req, res, db, bcrypt)=>{
-
+	if(req.body.email || req.body.password === ''){
+		alert('empty')
+	}
+	else{
 		db.select('email', 'hash').from('login').where('email', '=', req.body.email)
 		.then(data=>{
 			const isValid = bcrypt.compareSync(req.body.password, data[0].hash);
@@ -18,7 +21,7 @@ const signInHandler = (req, res, db, bcrypt)=>{
 		})
 		.catch(err=>res.status(400).json('Not Found'))
 	}
-
+}
 module.exports = {
 	signInHandler
 }
