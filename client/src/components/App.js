@@ -13,7 +13,7 @@ import SignIn from './SignIn/SignIn.js'
 import Register from './Register/Register.js'
 import { Spinner } from './spinner/spinner'
 
-const dbUrl = 'https://smartbrain-69-api.herokuapp.com/'
+const dbUrl = 'https://smartbrain-69.herokuapp.com/'
 // const dbUrl = 'http://localhost:3002/';
 
 const ParticleOption = {
