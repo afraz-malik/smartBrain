@@ -1,4 +1,4 @@
-# smartBrain-api
+# smartBrain
 
 Backend Code for Smart Brain app Database <br/>
 Connected By HerokuApp <br/>
