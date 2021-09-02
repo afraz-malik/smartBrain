@@ -47,16 +47,19 @@ app.use((req, res, next) => {
 app.use(bodyParser.json())
 app.use(cors())
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'client/build')))
+// Below line has been extracted from package.json
+// "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
 
-  app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
-  })
-}
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static(path.join(__dirname, 'client/build')))
 
-app.get('/', (req, res) => {
-  res.json('PostgreSql from github')
+//   app.get('*', function (req, res) {
+//     res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
+//   })
+// }
+
+app.get('*', (req, res) => {
+  res.json('This server has backend code for SmartBrain with db Postgress')
 })
 app.get('/admin', (req, res) => admin.adminHandler(req, res, db))
 app.post('/signin', (req, res) => signin.signInHandler(req, res, db, bcrypt))
